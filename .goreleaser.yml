@@ -1,0 +1,51 @@
+project_name: lorawan-gateway-bridge
+
+env:
+  - GOMIPS=softfloat
+
+builds:
+  - main: cmd/lorawan-gateway-bridge/main.go
+    binary: lorawan-gateway-bridge
+    goos:
+      - windows
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - 386
+      - arm
+      - arm64
+      - mips
+    goarm:
+      - 5
+      - 6
+      - 7
+    ignore:
+      - goos: darwin
+        goarch: 386
+    hooks:
+      post: ./packaging/scripts/compress-mips.sh
+
+release:
+  disable: true
+
+nfpm:
+  vendor: lorawan
+  homepage: https://www.lorawan.io/
+  maintainer: Orne Brocaar <info@brocaar.com>
+  description: lorawan Gateway Bridge
+  license: MIT
+  formats:
+    - deb
+    - rpm
+  bindir: /usr/bin
+  files:
+    "packaging/files/lorawan-gateway-bridge.rotate": "/etc/logrotate.d/lorawan-gateway-bridge"
+    "packaging/files/lorawan-gateway-bridge.init": "/usr/lib/lorawan-gateway-bridge/scripts/lorawan-gateway-bridge.init"
+    "packaging/files/lorawan-gateway-bridge.service": "/usr/lib/lorawan-gateway-bridge/scripts/lorawan-gateway-bridge.service"
+  config_files:
+    "packaging/files/lorawan-gateway-bridge.toml": "/etc/lorawan-gateway-bridge/lorawan-gateway-bridge.toml"
+  scripts:
+    preinstall: "packaging/scripts/pre-install.sh"
+    postinstall: "packaging/scripts/post-install.sh"
+    postremove: "packaging/scripts/post-remove.sh"
