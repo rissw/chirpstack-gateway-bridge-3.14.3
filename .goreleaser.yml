@@ -32,8 +32,8 @@ release:
 nfpm:
   vendor: lorawan
   homepage: https://www.lorawan.io/
-  maintainer: Orne Brocaar <info@brocaar.com>
-  description: lorawan Gateway Bridge
+  maintainer: Somebody <me@somebody.com>
+  description: Lorawan Gateway Bridge
   license: MIT
   formats:
     - deb
