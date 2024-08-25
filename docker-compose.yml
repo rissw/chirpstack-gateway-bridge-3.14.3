@@ -1,13 +1,13 @@
 version: "2"
 services:
-  chirpstack-gateway-bridge:
+  lorawan-gateway-bridge:
     build:
       context: .
       dockerfile: Dockerfile-devel
     ports:
       - "1700:1700/udp"
     volumes:
-      - ./:/chirpstack-gateway-bridge
+      - ./:/lorawan-gateway-bridge
     links:
       - mosquitto
     environment:
