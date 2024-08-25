@@ -4,7 +4,7 @@ VERSION := $(shell git describe --always |sed -e "s/^v//")
 build:
 	@echo "Compiling source"
 	@mkdir -p build
-	go build $(GO_EXTRA_BUILD_ARGS) -ldflags "-s -w -X main.version=$(VERSION)" -o build/chirpstack-gateway-bridge cmd/chirpstack-gateway-bridge/main.go
+	go build $(GO_EXTRA_BUILD_ARGS) -ldflags "-s -w -X main.version=$(VERSION)" -o build/lorawan-gateway-bridge cmd/lorawan-gateway-bridge/main.go
 
 clean:
 	@echo "Cleaning up workspace"
@@ -38,7 +38,7 @@ dev-requirements:
 # shortcuts for development
 
 serve: build
-	./build/chirpstack-gateway-bridge
+	./build/lorawan-gateway-bridge
 
 run-compose-test:
-	docker-compose run --rm chirpstack-gateway-bridge make test
+	docker-compose run --rm lorawan-gateway-bridge make test
