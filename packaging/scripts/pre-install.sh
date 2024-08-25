@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 OLD_NAME=lora-gateway-bridge
-NAME=chirpstack-gateway-bridge
+NAME=lorawan-gateway-bridge
 
 # migrate config to new location
 if [[ -f /etc/$OLD_NAME/$OLD_NAME.toml ]] && [[ ! -h /etc/$OLD_NAME/$OLD_NAME.toml ]] && [[ ! -f /etc/$NAME/$NAME.toml ]]; then

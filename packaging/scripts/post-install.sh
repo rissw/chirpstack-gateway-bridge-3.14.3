@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 OLD_NAME=lora-gateway-bridge
-NAME=chirpstack-gateway-bridge
+NAME=lorawan-gateway-bridge
 BIN_DIR=/usr/bin
-SCRIPT_DIR=/usr/lib/chirpstack-gateway-bridge/scripts
-LOG_DIR=/var/log/chirpstack-gateway-bridge
+SCRIPT_DIR=/usr/lib/lorawan-gateway-bridge/scripts
+LOG_DIR=/var/log/lorawan-gateway-bridge
 DAEMON_USER=gatewaybridge
 DAEMON_GROUP=gatewaybridge
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 OLD_NAME=lora-gateway-bridge
-NAME=chirpstack-gateway-bridge
+NAME=lorawan-gateway-bridge
 
 function remove_systemd {
 	systemctl stop $NAME
