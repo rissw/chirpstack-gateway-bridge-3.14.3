@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 ### BEGIN INIT INFO
-# Provides:          chirpstack-gateway-bridge
+# Provides:          lorawan-gateway-bridge
 # Required-Start:    $all
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: ChirpStack Gateway Bridge
+# Short-Description: Lorawan Gateway Bridge
 ### END INIT INFO
 
 
-NAME=chirpstack-gateway-bridge
-DESC="ChirpStack Gateway Bridge"
+NAME=lorawan-gateway-bridge
+DESC="Lorawan Gateway Bridge"
 DAEMON_USER=gatewaybridge
 DAEMON_GROUP=gatewaybridge
 DAEMON=/usr/bin/$NAME

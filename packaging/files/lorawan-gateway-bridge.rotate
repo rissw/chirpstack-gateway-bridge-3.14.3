@@ -1,4 +1,4 @@
-/var/log/chirpstack-gateway-bridge/chirpstack-gateway-bridge.log {
+/var/log/lorawan-gateway-bridge/lorawan-gateway-bridge.log {
     daily
     rotate 7
     missingok
