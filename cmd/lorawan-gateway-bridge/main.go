@@ -3,7 +3,7 @@ package main
 import (
 	"time"
 
-	"github.com/brocaar/chirpstack-gateway-bridge/cmd/chirpstack-gateway-bridge/cmd"
+	"github.com/brocaar/chirpstack-gateway-bridge/cmd/lorawan-gateway-bridge/cmd"
 	paho "github.com/eclipse/paho.mqtt.golang"
 	log "github.com/sirupsen/logrus"
 )
