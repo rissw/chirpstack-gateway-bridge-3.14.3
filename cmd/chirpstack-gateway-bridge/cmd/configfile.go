@@ -23,8 +23,8 @@ log_to_syslog={{ .General.LogToSyslog }}
 # Filters.
 #
 # These can be used to filter LoRaWAN frames to reduce bandwith usage between
-# the gateway and ChirpStack Gateway Bridge. Depending the used backend, filtering
-# will be performed by the Packet Forwarder or ChirpStack Gateway Bridge.
+# the gateway and Lorawan Gateway Bridge. Depending the used backend, filtering
+# will be performed by the Packet Forwarder or Lorawan Gateway Bridge.
 [filters]
 
 # NetIDs filters.
@@ -92,7 +92,7 @@ type="{{ .Backend.Type }}"
   fake_rx_time={{ .Backend.SemtechUDP.FakeRxTime }}
 
 
-  # ChirpStack Concentratord backend.
+  # Lorawan Concentratord backend.
   [backend.concentratord]
 
   # Check for CRC OK.
@@ -114,19 +114,19 @@ type="{{ .Backend.Type }}"
   # TLS certificate and key files.
   #
   # When set, the websocket listener will use TLS to secure the connections
-  # between the gateways and ChirpStack Gateway Bridge (optional).
+  # between the gateways and Lorawan Gateway Bridge (optional).
   tls_cert="{{ .Backend.BasicStation.TLSCert }}"
   tls_key="{{ .Backend.BasicStation.TLSKey }}"
 
   # TLS CA certificate.
   #
-  # When configured, ChirpStack Gateway Bridge will validate that the client
+  # When configured, Lorawan Gateway Bridge will validate that the client
   # certificate of the gateway has been signed by this CA certificate.
   ca_cert="{{ .Backend.BasicStation.CACert }}"
 
   # Stats interval.
   #
-  # This defines the interval in which the ChirpStack Gateway Bridge forwards
+  # This defines the interval in which the Lorawan Gateway Bridge forwards
   # the uplink / downlink statistics.
   stats_interval="{{ .Backend.BasicStation.StatsInterval }}"
 
@@ -135,7 +135,7 @@ type="{{ .Backend.Type }}"
 
   # Timesync interval.
   #
-  # This defines the interval in which the ChirpStack Gateway Bridge sends
+  # This defines the interval in which the Lorawan Gateway Bridge sends
   # a timesync request to the gateway. Setting this to 0 disables sending
   # timesync requests.
   timesync_interval="{{ .Backend.BasicStation.TimesyncInterval }}"
@@ -258,7 +258,7 @@ marshaler="{{ .Integration.Marshaler }}"
 
   # Terminate on connect error.
   #
-  # When set to true, instead of re-trying to connect, the ChirpStack Gateway Bridge
+  # When set to true, instead of re-trying to connect, the Lorawan Gateway Bridge
   # process will be terminated on a connection error.
   terminate_on_connect_error={{ .Integration.MQTT.TerminateOnConnectError }}
 
@@ -373,7 +373,7 @@ marshaler="{{ .Integration.Marshaler }}"
 
     # Token expiration (symmetric key authentication).
     #
-    # ChirpStack Gateway Bridge will generate a SAS token with the given expiration.
+    # Lorawan Gateway Bridge will generate a SAS token with the given expiration.
     # After the token has expired, it will generate a new one and trigger a
     # re-connect (only for symmetric key authentication).
     sas_token_expiration="{{ .Integration.MQTT.Auth.AzureIoTHub.SASTokenExpiration }}"
@@ -404,7 +404,7 @@ marshaler="{{ .Integration.Marshaler }}"
 
   # Metrics stored in Prometheus.
   #
-  # These metrics expose information about the state of the ChirpStack Gateway Bridge
+  # These metrics expose information about the state of the Lorawan Gateway Bridge
   # instance like number of messages processed, number of function calls, etc.
   [metrics.prometheus]
   # Expose Prometheus metrics endpoint.
@@ -417,7 +417,7 @@ marshaler="{{ .Integration.Marshaler }}"
 
 # Gateway meta-data.
 #
-# The meta-data will be added to every stats message sent by the ChirpStack Gateway
+# The meta-data will be added to every stats message sent by the Lorawan Gateway
 # Bridge.
 [meta_data]
 
@@ -447,7 +447,7 @@ marshaler="{{ .Integration.Marshaler }}"
 
   # Split delimiter.
   #
-  # When the output of a command returns multiple lines, ChirpStack Gateway Bridge
+  # When the output of a command returns multiple lines, Lorawan Gateway Bridge
   # assumes multiple values are returned. In this case it will split by the given delimiter
   # to obtain the key / value of each row. The key will be prefixed with the name of the
   # configured command.
@@ -470,7 +470,7 @@ marshaler="{{ .Integration.Marshaler }}"
 # Executable commands.
 #
 # The configured commands can be triggered by sending a message to the
-# ChirpStack Gateway Bridge.
+# Lorawan Gateway Bridge.
 [commands]
   # Example:
   # [commands.commands.reboot]
@@ -485,7 +485,7 @@ marshaler="{{ .Integration.Marshaler }}"
 
 var configCmd = &cobra.Command{
 	Use:   "configfile",
-	Short: "Print the ChirpStack Gateway Bridge configuration file",
+	Short: "Print the Lorawan Gateway Bridge configuration file",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		t := template.Must(template.New("config").Parse(configTemplate))
 		err := t.Execute(os.Stdout, config.C)
